@@ -1,0 +1,13 @@
+nodejs version 8.9.1
+npm install
+
+ DEBUG=myapp:* npm start
+primero correr el api
+npm run start 
+//se encontrara en http://localhost:4500/api
+PARA CORRER LAS PRUEBAS 
+npm run controllerTest
+
+
+
+ [{"cat_prec_id":"445","nombre":"aa","precio":"1"},{"cat_prec_id":"446","nombre":"papiya","precio":"444"},{"cat_prec_id":"448","nombre":"","precio":"0"},{"cat_prec_id":"449","nombre":"asdfas","precio":"150"},{"cat_prec_id":"450","nombre":"Uno","precio":"12.99"},{"cat_prec_id":"451","nombre":"Uno","precio":"12.99"},{"cat_prec_id":"452","nombre":"pjpj","precio":"90"},{"cat_prec_id":"453","nombre":"papiyasssss","precio":"3333"},{"cat_prec_id":"454","nombre":"otrosss","precio":"13"},{"cat_prec_id":"457","nombre":"","precio":"0"},{"cat_prec_id":"461","nombre":"PruebaProducto","precio":"220"},{"cat_prec_id":"462","nombre":"efren","precio":"3000"},{"cat_prec_id":"463","nombre":"","precio":"0"},{"cat_prec_id":"464","nombre":"enriques","precio":"23.5"},{"cat_prec_id":"465","nombre":"hola","precio":"123"}]
