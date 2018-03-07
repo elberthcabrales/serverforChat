@@ -25,7 +25,7 @@ var server = http.createServer(app);
  * Mongoose config for global promise
  */
 mongoose.Promise = global.Promise;
-mongoose.connect("mongodb://localhost/ngrxTodo",(err, res) => {
+mongoose.connect("mongodb://localhost/ngChatSockets",(err, res) => {
 	if(err){
 		throw err;
 	}else{

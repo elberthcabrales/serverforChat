@@ -5,12 +5,19 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+const fileUpload = require('express-fileupload');
 
 //rutas
-var index = require('./routes/index');
-
+var user = require('./routes/user.server.route');
+var message = require('./routes/message.server.route');
 
 var app = express();
+
+
+//use middleware to upload files
+app.use(fileUpload({
+  limits: { fileSize: 2 * 1024 * 1024, files: 1 },// 5MB doc https://github.com/mscdex/busboy#api
+}));
 
 //cors middleware 
 app.use(cors());
@@ -27,8 +34,8 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/api', index);
-
+app.use('/api', user);
+app.use('/api', message);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
