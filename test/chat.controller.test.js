@@ -4,7 +4,21 @@ const app = require('./../app');
 const supertest = require('supertest');
 const should = require('should');
 const faker = require('faker');
+var io = require('socket.io-client');
+/**
+ * config socket io with three clients
+ */
+var socketURL = 'http://localhost:4500/';
 
+var options ={
+  transports: ['websocket'],
+  'force new connection': true
+};
+
+var chatUser1 = {'name':'Tom'};
+/**
+ * -------------------------------------
+ */
 var server = supertest.agent("http://localhost:4500/");
 let elberth, ana, idToRemove=null;
 before((done) => {		
@@ -143,5 +157,20 @@ describe('Message unit test for controller:', (done) => {
                 //res.body.should.have.property('to', ana.user._id);
                 done();
             });
+    });
+});
+
+
+
+
+
+describe("Chat Server",(done) =>{
+    it('Should broadcast new user to all users', (done)=>{
+        var client1 = io.connect('http://localhost:4500/', options);
+        client1.on('news', function (data) {
+            console.log("Entro");
+            client1.emit('my other event', { my: 'data from cliente test to server' });
+        });
+        done();
     });
 });

@@ -8,6 +8,8 @@ var app = require('../app');
 var debug = require('debug')('myapp:server');
 var http = require('http');
 var mongoose = require('mongoose');
+
+
 /**
  * Get port from environment and store in Express.
  */
@@ -21,6 +23,15 @@ app.set('port', port);
 
 var server = http.createServer(app);
 
+//socket io
+var io = require('socket.io')(server);
+
+io.on('connection', function (socket) {
+  socket.emit('news', { hello: 'world' });
+  socket.on('my other event', function (data) {
+    console.log(data);
+  });
+});
 /**
  * Mongoose config for global promise
  */

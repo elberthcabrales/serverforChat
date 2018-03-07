@@ -6,12 +6,13 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 const fileUpload = require('express-fileupload');
+var app = express();
+
 
 //rutas
 var user = require('./routes/user.server.route');
 var message = require('./routes/message.server.route');
 
-var app = express();
 
 
 //use middleware to upload files

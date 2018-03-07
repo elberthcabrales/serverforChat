@@ -16,9 +16,9 @@ function create(req, res) {
 
 function listMessages(req,res){
 	Message.find({'$or':[{
-			'$and':[{'from':req.payload.user._id},{'to':req.body.to}]
+			'$and':[{'from':req.payload.user._id},{'to':req.body.other}]
 		},{
-			'$and':[{'to':  req.payload.user._id},{'from': req.body.to}]
+			'$and':[{'to':  req.payload.user._id},{'from': req.body.other}]
 		}]}).sort({'created':1}).exec((err, messages) => {
         if (err) 
             return res.status(400).send({
