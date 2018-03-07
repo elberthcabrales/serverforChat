@@ -17,6 +17,7 @@ var UserSchema = new Schema({
 		password: {
             type: String,
             required: 'Password is required',
+            select : false,
             validate: [
                 (password) => password && password.length > 6,
                 'Password should be longer'

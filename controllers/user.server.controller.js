@@ -51,7 +51,7 @@ function remove(req, res){
 
 function changePassword(req, res){
 	let user = req.user;
-	//if(req.payload.user._id!=user._id) return res.status(401).send({error:"Solo puedes actualizar tu contraseña"});
+	if(req.payload.user._id!=user._id) return res.status(401).send({error:"Solo puedes actualizar tu contraseña"});
 
 	user.password = passwordHash.generate(req.body.password);;
 	user.save().then((usr)=>{
